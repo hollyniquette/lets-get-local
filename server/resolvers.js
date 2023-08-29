@@ -12,12 +12,22 @@ const resolvers = {
   },
   Mutation: {
     createEvent: async (parent, args) => {
-      const { name, description, date, time, location, image, category } = args;
+      const {
+        name,
+        description,
+        date,
+        beginTime,
+        endTime,
+        location,
+        image,
+        category,
+      } = args;
       const event = new Event({
         name,
         description,
         date,
-        time,
+        beginTime,
+        endTime,
         location,
         image,
         category,
@@ -26,6 +36,48 @@ const resolvers = {
       });
       await event.save();
       return event;
+    },
+    updateEvent: async (parent, args) => {
+      const {
+        id,
+        name,
+        description,
+        date,
+        beginTime,
+        endTime,
+        location,
+        image,
+        category,
+      } = args;
+      const event = await Event.findByIdAndUpdate(id, {
+        name,
+        description,
+        date,
+        beginTime,
+        endTime,
+        location,
+        image,
+        category,
+        updatedAt: new Date().toISOString(),
+      });
+      return event;
+    },
+    deleteEvent: async (parent, args) => {
+      const { id } = args;
+      const event = await Event.findByIdAndDelete(id);
+      return event;
+    },
+    createUser: async (parent, args) => {
+      const { username, password, email } = args;
+      const user = new User({
+        username,
+        password,
+        email,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      });
+      await user.save();
+      return user;
     },
   },
 };

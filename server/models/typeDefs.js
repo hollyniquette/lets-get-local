@@ -1,15 +1,25 @@
 const gql = require('graphql-tag');
 
 const typeDefs = gql`
+  enum Type {
+    AUTOMOTIVE
+    SPORTS
+    ENTERAINMENT
+    EDUCATION
+    PETS
+    OTHER
+  }
+
   type Event {
     id: ID
     name: String
     description: String
     date: String
-    time: String
+    beginTime: String
+    endTime: String
     location: String
     image: String
-    category: String
+    type: Type
     createdAt: String
     updatedAt: String
   }
@@ -37,20 +47,22 @@ const typeDefs = gql`
       name: String!
       description: String
       date: String!
-      time: String
+      beginTime: String
+      endTime: String
       location: String
       image: String
-      category: String!
+      type: Type!
     ): Event
     updateEvent(
       id: ID!
       name: String
       description: String
       date: String
-      time: String
+      beginTime: String
+      endTime: String
       location: String
       image: String
-      category: String
+      type: Type
     ): Event
     deleteEvent(id: ID!): Event
 

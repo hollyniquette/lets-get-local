@@ -23,5 +23,7 @@ mongoose
     });
   })
   .catch((err) => {
+    console.log('Error connecting to MongoDB Atlas');
     console.log('Error: ', err.message);
+    console.log('Shutting down server');
   });
