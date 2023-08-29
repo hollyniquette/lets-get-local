@@ -1,5 +1,5 @@
-const { Event } = require('./models/Event');
-const { User } = require('./models/User');
+const { Event } = require("./models/Event");
+const { User } = require("./models/User");
 
 // GraphQL Resolvers
 const resolvers = {
@@ -20,7 +20,7 @@ const resolvers = {
         endTime,
         location,
         image,
-        category,
+        type,
       } = args;
       const event = new Event({
         name,
@@ -30,7 +30,7 @@ const resolvers = {
         endTime,
         location,
         image,
-        category,
+        type,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       });
@@ -47,7 +47,7 @@ const resolvers = {
         endTime,
         location,
         image,
-        category,
+        type,
       } = args;
       const event = await Event.findByIdAndUpdate(id, {
         name,
@@ -57,7 +57,7 @@ const resolvers = {
         endTime,
         location,
         image,
-        category,
+        type,
         updatedAt: new Date().toISOString(),
       });
       return event;
