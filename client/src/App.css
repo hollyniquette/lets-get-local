@@ -74,3 +74,32 @@ header nav button {
     font-size: 1rem;
     margin-bottom: 1rem;
 }
+
+.homePostBox {
+    width: 100vw;
+}
+
+.homePost {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 20px;
+    width: 50%;
+    border: 2px solid black;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    width: min-content;
+    height: min-content;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0 10px 0 10px;
+}
+
+.tag svg {
+    margin-right: 10px;
+}
