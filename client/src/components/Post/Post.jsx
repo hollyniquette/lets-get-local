@@ -1,1 +1,0 @@
-//this is where the post component will go
