@@ -5,7 +5,7 @@ export default function HomePage() {
 
     return(
         <>
-            <Navbar/>
+           
             <div className="homePostBox">
                 <PostH/>
             </div>
