@@ -1,28 +1,67 @@
-import React, { useState } from 'react';
-import  {  useNavigate } from 'react-router-dom'
-import  './login.css'
-export default function index() {
-    const navigate = useNavigate()
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const handleSubmit = async (event) => {
-      console.log("yo man")
-      event.preventDefault();
-     const response = await login(email, password);
-     authLogin(response.data);
-     setUser(response.data);
-      navigate('/test');
+import React, {useState} from 'react';
+
+function AuthBox() {
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (isSignUp) {
+      console.log('Sign Up - Email:', email);
+      console.log('Sign Up - Password:', password);
+    } else {
+      console.log('Login - Email:', email);
+      console.log('Login - Password:', password);
     }
+    
+  };
+
   return (
-    <div className='form-wrapper'>
-    <form onSubmit={handleSubmit}>
-      <div className="card">
-        <h1>Log in</h1>
-        <input className="input" type="text" placeholder='email' onChange={(e) => {setEmail(e.target.value)}}></input>
-        <input className="input" type="text" placeholder='password' onChange={(e) => {setPassword(e.target.value)}}></input>
-        <button id="login-submit">submit</button>
-      </div>
-    </form>
-  </div>
-  )
+    <div className="auth-box">
+      <h2>{isSignUp ? 'Sign Up' : 'Login'}</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+            required
+          />
+        </div>
+        <button type="submit">{isSignUp ? 'Sign Up' : 'Login'}</button>
+      </form>
+      <p>
+        {isSignUp
+          ? 'Already have an account?'
+          : "Don't have an account yet?"}
+        <button onClick={() => setIsSignUp(!isSignUp)}>
+          {isSignUp ? 'Login' : 'Sign Up'}
+        </button>
+      </p>
+    </div>
+  );
 }
+
+export default AuthBox;
+
+  
