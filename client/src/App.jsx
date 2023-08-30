@@ -1,6 +1,5 @@
 
-import HomePage from './components/HomePage'
-import './App.css'
+import { Outlet } from 'react-router-dom';
 
 
 function App() {
@@ -8,7 +7,7 @@ function App() {
 
   return (
     <>
-      <HomePage/>
+      <Outlet/>
     </>
   )
 }
