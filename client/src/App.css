@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: rgb(46, 46, 46);
+    background-color: rgb(174, 195, 174);
     width: 100vw;
     display: inline-flex;
     justify-content: space-between;
@@ -23,6 +23,7 @@ header h1 {
     color: white;
     font-family: sans-serif;
     font-size: 40px;
+    margin-left: 15%;
 }
 
 header nav {
@@ -41,7 +42,7 @@ header nav a {
 }
 
 header nav button {
-    background-color: red;
+    background-color: rgb(129, 144, 115);
     color: white;
     padding: 10px;
 }
@@ -87,7 +88,8 @@ header nav button {
     margin: auto;
     margin-top: 20px;
     width: 50%;
-    border: 2px solid black;
+    border: 5px solid rgb(129, 144, 115);
+    background: rgb(203, 187, 167);
 }
 
 .tag {

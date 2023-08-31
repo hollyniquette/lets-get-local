@@ -1,4 +1,4 @@
-export default function AutomotiveTag() {
+export default function OthersTag() {
 
     return(
         <div className="tag">
