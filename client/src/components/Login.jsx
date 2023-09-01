@@ -27,39 +27,17 @@ function AuthBox() {
   };
 
   return (
-    <div className="auth-box">
-      <h2>{isSignUp ? 'Sign Up' : 'Login'}</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-          />
-        </div>
-        <button type="submit">{isSignUp ? 'Sign Up' : 'Login'}</button>
-      </form>
-      <p>
-        {isSignUp
-          ? 'Already have an account?'
-          : "Don't have an account yet?"}
-        <button onClick={() => setIsSignUp(!isSignUp)}>
-          {isSignUp ? 'Login' : 'Sign Up'}
-        </button>
-      </p>
-    </div>
-  );
+    <div className='form-wrapper'>
+    <form onSubmit={handleSubmit}>
+      <div className="card">
+        <h1>Log in</h1>
+        <input className="input" type="text" placeholder='email' onChange={(e) => {setEmail(e.target.value)}}></input>
+        <input className="input" type="text" placeholder='password' onChange={(e) => {setPassword(e.target.value)}}></input>
+        <button id="login-submit">submit</button>
+      </div>
+    </form>
+  </div>
+  )
 }
 
 export default AuthBox;

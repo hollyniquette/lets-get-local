@@ -1,7 +1,5 @@
-import Navbar from './components/Navbar'
-import HomePage from './components/HomePage'
-import './App.css'
-import Login from './components/Login'
+
+import { Outlet } from 'react-router-dom';
 
 
 function App() {
@@ -9,9 +7,7 @@ function App() {
 
   return (
     <>
-    <Login/>
-
-  
+      <Outlet/>
     </>
   )
 }
