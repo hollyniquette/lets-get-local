@@ -6,10 +6,9 @@ import { EVENTS } from "../../queries";
 
 export default function HomePage() {
   const { loading, error, data } = useQuery(EVENTS);
-  if (error) return <Error />;
-  if (loading) return <Fetching />;
 
-  const event = data?.events || {};
+  //   if (error) return <Error />;
+  //   if (loading) return <Fetching />;
 
   return (
     <>
@@ -17,13 +16,17 @@ export default function HomePage() {
       <h1>Home</h1>
       <FilterDropdown />
       <div className="homePostBox">
-        <PostH
-          eventName={data.name}
-          eventDescription={data.description}
-          eventLocation={data.location}
-          eventType={data.eventType}
-          eventImage={data.eventImage}
-        />
+        {data?.events?.map((event, index) => {
+          return (
+            <PostH
+              eventName={event.name}
+              eventDescription={event.description}
+              eventLocation={event.location}
+              eventType={event.type}
+              eventImage={event.image}
+            />
+          );
+        })}
       </div>
     </>
   );

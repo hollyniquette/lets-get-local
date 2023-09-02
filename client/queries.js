@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client";
 
 export const EVENTS = gql`
-  query allEvents {
+  query getEvents {
     events {
-      _id
+      id
       name
       description
       date
