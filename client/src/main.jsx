@@ -9,6 +9,9 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import HomePage from "./components/HomePage.jsx";
 import ProfilePage from "./components/ProfilePage.jsx";
 import NewEvent from "./components/NewEvent.jsx";
+import LoginPage from "./components/LoginPage.jsx";
+import Login from "./components/Login.jsx";
+import Signup from "./components/Signup.jsx";
 
 if (process.env.NODE_ENV !== "production") {
   // Adds messages only in a dev environment
@@ -28,7 +31,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: <LoginPage />,
       },
       {
         path: "home",
@@ -41,6 +44,14 @@ const router = createBrowserRouter([
       {
         path: "profile/newevent",
         element: <NewEvent />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
       },
     ],
   },

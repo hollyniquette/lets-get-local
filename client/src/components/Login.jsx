@@ -1,27 +1,22 @@
-// import React, { useState } from 'react';
-// import  {  useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 export default function Login() {
-    // const navigate = useNavigate()
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-    // const handleSubmit = async (event) => {
-    //   console.log("yo man")
-    //   event.preventDefault();
-    //  const response = await login(email, password);
-    //  authLogin(response.data);
-    //  setUser(response.data);
-    //   navigate('/test');
-    // }
+   
   return (
     <div className='form-wrapper'>
     <form>
       <div className="card">
         <h1>Log in</h1>
-        <input className="input" type="text" placeholder='email' onChange={(e) => {setEmail(e.target.value)}}></input>
-        <input className="input" type="text" placeholder='password' onChange={(e) => {setPassword(e.target.value)}}></input>
+        <input className="input" type="text" placeholder='E-mail'></input>
+        <input className="input" type="text" placeholder='Password'></input>
         <button id="login-submit">submit</button>
       </div>
     </form>
+    <div>
+        <Link to="..">
+                <button>Back</button>
+        </Link>
+      </div>
   </div>
   )
 }
