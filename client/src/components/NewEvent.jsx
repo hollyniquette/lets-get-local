@@ -11,6 +11,9 @@ export default function NewEvent() {
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
     const [type, setType] = useState('');
+    const [description, setDescription] = useState('');
+    const [beginTime, setBeginTime] = useState('');
+    const [location, setLocation] = useState('');
 
     const [CreateEvent, { error }] = useMutation(ADD_EVENT, {
       });
@@ -22,13 +25,16 @@ export default function NewEvent() {
           // Important for useMutation: Here we want the mutation to occur in response to a form submission
           // The mutation we want to run also requires mutation parameters to be passed, which we deliver as a variables object
           const { data } = await CreateEvent({
-            variables: { name, date, type},
+            variables: { name, date, type, description, beginTime, location},
           });
           
           // Instead of refreshing the page, the query dispatched at the src/pages/Home.jsx level is refetched, allowing the updated data to be passed down to the ThoughtList component for display. Then, we can directly clear the component state.
           setName('');
           setDate('');
           setType('');
+          setDescription('');
+          setBeginTime('');
+          setLocation('');
         } catch (err) {
           console.error(err);
         }
@@ -42,19 +48,19 @@ export default function NewEvent() {
             <div className="newEventBox">
                 <form onSubmit={handleFormSubmit}>
                     <label htmlFor="EventName">Event Name: </label>
-                    <input type="text" id="EventName" name="EventName" value={name} onChange={(event) => setName(event.target.value)}/>
+                    <input required type="text" id="EventName" name="EventName" value={name} onChange={(event) => setName(event.target.value)}/>
                     <br />
                     <label htmlFor="EventDescription">Event Description: </label>
-                    <input type="text" id="EventDescription" name="EventDescription"/>
+                    <input required type="text" id="EventDescription" name="EventDescription" value={description} onChange={(event) => setDescription(event.target.value)}/>
                     <br />
                     <label htmlFor="EventDate">Date of Event: </label>
-                    <input type="text" id="EventDate" name="EventDate" value={date} onChange={(event) => setDate(event.target.value)}/>
+                    <input required type="text" id="EventDate" name="EventDate" value={date} onChange={(event) => setDate(event.target.value)}/>
                     <br />
                     <label htmlFor="EventTime">Time of Event: </label>
-                    <input type="text" id="EventTime" name="EventTime"/>
+                    <input required type="text" id="EventTime" name="EventTime" value={beginTime} onChange={(event) => setBeginTime(event.target.value)}/>
                     <br />
                     <label htmlFor="EventLocation">Event Location: </label>
-                    <input type="text" id="EventLocation" name="EventLocation"/>
+                    <input required type="text" id="EventLocation" name="EventLocation" value={location} onChange={(event) => setLocation(event.target.value)}/>
                     <br />
                     <h4>Event Type</h4>
                     <input type="radio" id="Automotive" name="EventType" value={"AUTOMOTIVE"} onClick={(event) => setType(event.target.value)}/>
@@ -72,7 +78,7 @@ export default function NewEvent() {
                     <input type="radio" id="Sports" name="EventType" value={"SPORTS"} onClick={(event) => setType(event.target.value)}/>
                     <label htmlFor="Sports">Sports</label>
                     <br />
-                    <input type="radio" id="Other" name="EventType" value={"OTHER"} onClick={(event) => setType(event.target.value)}/>
+                    <input defaultChecked type="radio" id="Other" name="EventType" value={"OTHER"} onClick={(event) => setType(event.target.value)}/>
                     <label htmlFor="Other">Other</label>
                     <br />
                     <input type="submit" value="Create Event" />
