@@ -45,7 +45,7 @@ export default function NewEvent() {
             <Navbar/>
             <h1>Create New Event</h1>
                 
-            <div className="newEventBox">
+            <div className="box">
                 <form onSubmit={handleFormSubmit}>
                     <label htmlFor="EventName">Event Name: </label>
                     <input required type="text" id="EventName" name="EventName" value={name} onChange={(event) => setName(event.target.value)}/>
