@@ -78,7 +78,7 @@ export default function NewEvent() {
                     <input type="radio" id="Sports" name="EventType" value={"SPORTS"} onClick={(event) => setType(event.target.value)}/>
                     <label htmlFor="Sports">Sports</label>
                     <br />
-                    <input defaultChecked type="radio" id="Other" name="EventType" value={"OTHER"} onClick={(event) => setType(event.target.value)}/>
+                    <input type="radio" id="Other" name="EventType" value={"OTHER"} onClick={(event) => setType(event.target.value)}/>
                     <label htmlFor="Other">Other</label>
                     <br />
                     <input type="submit" value="Create Event" />
