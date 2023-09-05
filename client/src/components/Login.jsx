@@ -34,7 +34,7 @@ export default function Login() {
     <div className="form-wrapper">
       <form>
         <div className="card">
-          <h1>Log in</h1>
+          <h1 style={{ color: "white" }}>Log in</h1>
           <input
             className="input"
             name="email"

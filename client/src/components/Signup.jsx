@@ -35,7 +35,7 @@ export default function Signup() {
     <div className="form-wrapper">
       <form>
         <div className="card">
-          <h1>Sign Up</h1>
+          <h1 style={{ color: "white" }}>Sign Up</h1>
           <input
             className="input"
             name="username"
