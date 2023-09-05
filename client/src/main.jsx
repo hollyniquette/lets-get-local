@@ -1,40 +1,40 @@
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { AuthProvider } from './authContext';
-import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { AuthProvider } from "./authContext";
+import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 import {
   ApolloClient,
   ApolloProvider,
   InMemoryCache,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
-import HomePage from './components/HomePage.jsx';
-import ProfilePage from './components/ProfilePage.jsx';
-import NewEvent from './components/NewEvent.jsx';
-import LoginPage from './components/LoginPage.jsx';
-import Login from './components/Login.jsx';
-import Signup from './components/Signup.jsx';
+import HomePage from "./components/HomePage.jsx";
+import ProfilePage from "./components/ProfilePage.jsx";
+import NewEvent from "./components/NewEvent.jsx";
+import LoginPage from "./components/LoginPage.jsx";
+import Login from "./components/Login.jsx";
+import Signup from "./components/Signup.jsx";
 
 // eslint-disable-next-line no-undef
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   // Adds messages only in a dev environment
   loadDevMessages();
   loadErrorMessages();
 }
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/',
+  uri: "http://localhost:4000/",
 });
 
 const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: localStorage.getItem('token') || '',
+      authorization: localStorage.getItem("token") || "",
     },
   };
 });
@@ -46,7 +46,7 @@ const client = new ApolloClient({
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     children: [
       {
@@ -54,30 +54,30 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        path: 'home',
+        path: "home",
         element: <HomePage />,
       },
       {
-        path: 'profile',
+        path: "profile",
         element: <ProfilePage />,
       },
       {
-        path: 'profile/newevent',
+        path: "profile/newevent",
         element: <NewEvent />,
       },
       {
-        path: 'login',
+        path: "login",
         element: <Login />,
       },
       {
-        path: 'signup',
+        path: "signup",
         element: <Signup />,
       },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
     <ApolloProvider client={client}>
       <RouterProvider router={router} />

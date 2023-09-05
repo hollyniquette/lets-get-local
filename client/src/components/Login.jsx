@@ -1,9 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
-import { AuthContext } from '../authContext';
-import { useForm } from '../util/hooks';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../../mutations';
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AuthContext } from "../authContext";
+import { useForm } from "../util/hooks";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../../mutations";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -15,14 +15,14 @@ export default function Login() {
   }
 
   const { onChange, onSubmit, values } = useForm(loginUserCallback, {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
     update(proxy, { data: { loginUser: userData } }) {
       context.login(userData);
-      navigate('/home');
+      navigate("/home");
     },
     onError({ graphQLErrors }) {
       setErrors(graphQLErrors);
@@ -31,31 +31,31 @@ export default function Login() {
   });
 
   return (
-    <div className='form-wrapper'>
+    <div className="form-wrapper">
       <form>
-        <div className='card'>
+        <div className="card">
           <h1>Log in</h1>
           <input
-            className='input'
-            name='email'
-            type='text'
-            placeholder='E-mail'
+            className="input"
+            name="email"
+            type="text"
+            placeholder="E-mail"
             onChange={onChange}
           ></input>
           <input
-            className='input'
-            name='password'
-            type='text'
-            placeholder='Password'
+            className="input"
+            name="password"
+            type="text"
+            placeholder="Password"
             onChange={onChange}
           ></input>
-          <button id='login-submit' onClick={onSubmit}>
+          <button id="login-submit" onClick={onSubmit}>
             submit
           </button>
         </div>
       </form>
       <div>
-        <Link to='..'>
+        <Link to="..">
           <button>Back</button>
         </Link>
       </div>

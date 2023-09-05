@@ -1,9 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
-import { AuthContext } from '../authContext';
-import { useForm } from '../util/hooks';
-import { useMutation } from '@apollo/client';
-import { REGISTER_USER } from '../../mutations';
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AuthContext } from "../authContext";
+import { useForm } from "../util/hooks";
+import { useMutation } from "@apollo/client";
+import { REGISTER_USER } from "../../mutations";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -15,15 +15,15 @@ export default function Signup() {
   }
 
   const { onChange, onSubmit, values } = useForm(registerUserCallback, {
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    email: "",
+    password: "",
   });
 
   const [registerUser, { loading }] = useMutation(REGISTER_USER, {
     update(proxy, { data: { registerUser: userData } }) {
       context.login(userData);
-      navigate('/home');
+      navigate("/home");
     },
     onError({ graphQLErrors }) {
       setErrors(graphQLErrors);
@@ -32,38 +32,38 @@ export default function Signup() {
   });
 
   return (
-    <div className='form-wrapper'>
+    <div className="form-wrapper">
       <form>
-        <div className='card'>
+        <div className="card">
           <h1>Sign Up</h1>
           <input
-            className='input'
-            name='username'
-            type='text'
-            placeholder='Username'
+            className="input"
+            name="username"
+            type="text"
+            placeholder="Username"
             onChange={onChange}
           />
           <input
-            className='input'
-            name='email'
-            type='text'
-            placeholder='E-mail'
+            className="input"
+            name="email"
+            type="text"
+            placeholder="E-mail"
             onChange={onChange}
           ></input>
           <input
-            className='input'
-            type='text'
-            name='password'
-            placeholder='Password'
+            className="input"
+            type="text"
+            name="password"
+            placeholder="Password"
             onChange={onChange}
           ></input>
-          <button id='signup-submit' onClick={onSubmit}>
+          <button id="signup-submit" onClick={onSubmit}>
             submit
           </button>
         </div>
       </form>
       <div>
-        <Link to='..'>
+        <Link to="..">
           <button>Back</button>
         </Link>
       </div>
