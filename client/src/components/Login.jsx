@@ -5,8 +5,8 @@ export default function Login() {
   return (
     <div className='form-wrapper'>
     <form>
+   <h1>Log in</h1>
       <div className="card">
-        <h1>Log in</h1>
         <input className="input" type="text" placeholder='E-mail'></input>
         <input className="input" type="text" placeholder='Password'></input>
         <button id="login-submit">submit</button>

@@ -5,6 +5,7 @@ export default function ProfilePage() {
 
     return(
         <>
+         <div className="container">
             <h1>Welcome To Lets Get Local</h1>
             <Link to="login">
                 <button>Login</button>
@@ -12,6 +13,7 @@ export default function ProfilePage() {
             <Link to="signup">
                 <button>Sign Up</button>
             </Link>
+         </div>
         </>
     )
 
