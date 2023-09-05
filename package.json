@@ -1,17 +1,19 @@
 {
   "name": "lets-get-local",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "main entry point for LETS GET LOCAL",
+  "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "seed": "node seedEvents.js"
+    "server": "nodemon --quiet server",
+    "client": "npm run build --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "seed": "node server/seedEvents.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^8.2.1",
     "@apollo/server": "^4.9.2",
     "apollo-server-errors": "^3.3.1",
     "bcryptjs": "^2.4.3",

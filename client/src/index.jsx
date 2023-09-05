@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AuthProvider } from "./authContext";
+import { AuthProvider } from "./authContext.jsx";
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 import {
   ApolloClient,
