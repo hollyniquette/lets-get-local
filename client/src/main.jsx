@@ -18,6 +18,7 @@ import NewEvent from "./components/NewEvent.jsx";
 import LoginPage from "./components/LoginPage.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
+import EditEvent from "./components/EditEvent.jsx";
 
 // eslint-disable-next-line no-undef
 if (process.env.NODE_ENV !== "production") {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "profile/newevent",
         element: <NewEvent />,
+      },
+      {
+        path: "profile/editevent/:eventid",
+        element: <EditEvent />,
       },
       {
         path: "login",

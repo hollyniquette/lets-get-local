@@ -1,6 +1,8 @@
 import Navbar from "./Navbar"
 
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 // Important for useMutation: We import the useMutation hook from @apollo/client
 import { useMutation } from '@apollo/client';
 
@@ -14,6 +16,11 @@ export default function UpdateEvent() {
     const [description, setDescription] = useState('');
     const [beginTime, setBeginTime] = useState('');
     const [location, setLocation] = useState('');
+    const [updateEventId, setUpdateEventId] = useState('');
+
+
+    const { eventid } = useParams();
+    
 
     const [UpdateEvent, { error }] = useMutation(UPDATE_EVENT, {
       });
@@ -25,8 +32,9 @@ export default function UpdateEvent() {
           // Important for useMutation: Here we want the mutation to occur in response to a form submission
           // The mutation we want to run also requires mutation parameters to be passed, which we deliver as a variables object
           const { data } = await UpdateEvent({
-            variables: { name, date, type, description, beginTime, location},
+            variables: { name, date, type, description, beginTime, location, updateEventId: eventid,},
           });
+
           
           // Instead of refreshing the page, the query dispatched at the src/pages/Home.jsx level is refetched, allowing the updated data to be passed down to the ThoughtList component for display. Then, we can directly clear the component state.
           setName('');
@@ -81,7 +89,7 @@ export default function UpdateEvent() {
                     <input type="radio" id="Other" name="EventType" value={"OTHER"} onClick={(event) => setType(event.target.value)}/>
                     <label htmlFor="Other">Other</label>
                     <br />
-                    <input type="submit" value="Update Event" />
+                    <input type="submit" value="Update Event"/>
                 </form>
             </div>
         </>
