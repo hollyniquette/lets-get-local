@@ -181,4 +181,5 @@ input[type="submit"]:hover {
 #login-submit {
   padding: 15px;
   margin-bottom: 20px;
+  background-color: rgb(255, 238, 244);
 }
