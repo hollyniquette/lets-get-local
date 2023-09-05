@@ -7,7 +7,8 @@
     "server": "nodemon --quiet server",
     "client": "npm run build --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "seed": "node server/seedEvents.js"
+    "seed": "node server/seedEvents.js",
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
