@@ -24,6 +24,8 @@ export default function HomePage() {
               eventLocation={event.location}
               eventType={event.type}
               eventImage={event.image}
+              eventDate={event.date}
+              eventTime={event.beginTime}
             />
           );
         })}

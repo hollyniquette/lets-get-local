@@ -30,8 +30,20 @@ const typeDefs = gql`
     password: String
     email: String
     loggedIn: Boolean
+    token: String
     createdAt: String
     updatedAt: String
+  }
+
+  input RegisterInput {
+    username: String
+    password: String
+    email: String
+  }
+
+  input LoginInput {
+    email: String
+    password: String
   }
 
   type Query {
@@ -66,8 +78,8 @@ const typeDefs = gql`
     ): Event
     deleteEvent(id: ID!): Event
 
-    createUser(username: String!, password: String!, email: String): User
-    updateUser(id: ID!, username: String, password: String, email: String): User
+    registerUser(registerInput: RegisterInput): User
+    loginUser(loginInput: LoginInput): User
     deleteUser(id: ID!): User
   }
 `;

@@ -5,7 +5,9 @@ const { resolvers } = require('./resolvers.js');
 const { typeDefs } = require('./models/typeDefs.js');
 const { default: mongoose } = require('mongoose');
 
-const mongo_uri = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@${process.env.MONGO_URL}`;
+
+const mongo_uri = `mongodb+srv://root:${process.env.PASSWORD}@${process.env.MONGO_URL}`;
+
 
 const server = new ApolloServer({ typeDefs, resolvers });
 

@@ -1,5 +1,8 @@
-const { Event } = require("./models/Event");
-const { User } = require("./models/User");
+const { Event } = require('./models/Event');
+const { User } = require('./models/User');
+const { ApolloError } = require('apollo-server-errors');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // GraphQL Resolvers
 const resolvers = {
@@ -67,15 +70,73 @@ const resolvers = {
       const event = await Event.findByIdAndDelete(id);
       return event;
     },
-    createUser: async (parent, args) => {
+    registerUser: async (parent, args) => {
       const { username, password, email } = args;
-      const user = new User({
-        username,
-        password,
-        email,
+
+      // see if user already exists
+      const oldUser = await User.findOne({ email });
+
+      // throw error if so
+      if (oldUser) {
+        throw new ApolloError('Email already in use');
+      }
+
+      // hash password
+      const hashedPassword = await bcrypt.hash(password, 12);
+
+      // create new user
+      const newUser = new User({
+        username: username,
+        password: hashedPassword,
+        email: email.toLowerCase(),
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       });
+
+      // generate token
+      const token = jwt.sign(
+        { id: newUser.id, email: newUser.email },
+        process.env.JWT_SECRET,
+        { expiresIn: '2h' }
+      );
+
+      // append token to newUser
+      newUser.token = token;
+
+      // save newUser to db
+      await newUser.save();
+      return newUser;
+    },
+    loginUser: async (parent, args) => {
+      const { email, password } = args;
+
+      // see if user exists
+      const user = await User.findOne({ email });
+
+      // throw error if not
+      if (!user) {
+        throw new ApolloError('Email not found');
+      }
+
+      // check if password is correct
+      const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
+      // throw error if not
+      if (!isPasswordCorrect) {
+        throw new ApolloError('Password is incorrect');
+      }
+
+      // generate token
+      const token = jwt.sign(
+        { id: user.id, email: user.email },
+        process.env.JWT_SECRET,
+        { expiresIn: '2h' }
+      );
+
+      // append token to user
+      user.token = token;
+
+      // update user in db
       await user.save();
       return user;
     },

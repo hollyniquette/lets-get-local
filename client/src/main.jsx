@@ -1,16 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import "./App.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
-import HomePage from "./components/HomePage.jsx";
-import ProfilePage from "./components/ProfilePage.jsx";
-import NewEvent from "./components/NewEvent.jsx";
+import HomePage from './components/HomePage.jsx';
+import ProfilePage from './components/ProfilePage.jsx';
+import NewEvent from './components/NewEvent.jsx';
+import LoginPage from './components/LoginPage.jsx';
+import Login from './components/Login.jsx';
+import Signup from './components/Signup.jsx';
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
   // Adds messages only in a dev environment
   loadDevMessages();
   loadErrorMessages();
@@ -18,35 +21,43 @@ if (process.env.NODE_ENV !== "production") {
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: "http://localhost:4000/graphql",
+  uri: 'http://localhost:4000/graphql',
 });
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     children: [
       {
         index: true,
+        element: <LoginPage />,
+      },
+      {
+        path: 'home',
         element: <HomePage />,
       },
       {
-        path: "home",
-        element: <HomePage />,
-      },
-      {
-        path: "profile",
+        path: 'profile',
         element: <ProfilePage />,
       },
       {
-        path: "profile/newevent",
+        path: 'profile/newevent',
         element: <NewEvent />,
+      },
+      {
+        path: 'login',
+        element: <Login />,
+      },
+      {
+        path: 'signup',
+        element: <Signup />,
       },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <ApolloProvider client={client}>
     <RouterProvider router={router} />
   </ApolloProvider>
