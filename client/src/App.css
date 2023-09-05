@@ -1,180 +1,184 @@
 :root {
-    --gray: rgb(42,42,42);
+  --gray: rgb(42, 42, 42);
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 header {
-    background-color: rgb(174, 195, 174);
-    width: 100vw;
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
+  background-color: rgb(174, 195, 174);
+  width: 100vw;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
 header svg {
-    margin-left: 5%;
+  margin-left: 5%;
 }
 
 header h1 {
-    color: white;
-    font-family: sans-serif;
-    font-size: 40px;
-    margin-left: 15%;
+  color: white;
+  font-family: sans-serif;
+  font-size: 40px;
+  margin-left: 15%;
 }
 
 header nav {
-    margin-right: 5%;
-    display: inline-flex;
-    justify-content: space-around;
-    width: 20%;
-    align-items: center;
+  margin-right: 5%;
+  display: inline-flex;
+  justify-content: space-around;
+  width: 20%;
+  align-items: center;
 }
 
 header nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    font-family: sans-serif;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: sans-serif;
 }
 
 header nav button {
-    background-color: rgb(129, 144, 115);
-    color: white;
-    padding: 10px;
+  background-color: rgb(129, 144, 115);
+  color: white;
+  padding: 10px;
 }
-
 
 .container {
-    width: 500px;
-    height: 200px;
-    background-color: rgb(255, 238, 244);
-    border: 5px solid rgb(129, 144, 115);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 10px;
-
+  width: 500px;
+  height: 200px;
+  background-color: rgb(255, 238, 244);
+  border: 5px solid rgb(129, 144, 115);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 
-.form-wrapper{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 15rem;
-    height: 90vh;
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 15rem;
+  height: 90vh;
 }
-.card{
-    display: flex;
-    flex-direction: column;
-    height: 250px;
-    width: fit-content;
-    padding: 0.2rem 1rem;
-    margin: 0.5rem;
-     background: rgb(129, 144, 115);
-    box-shadow: 4px 4px 8px 1px #00000075;
-    border-radius: 2px;
-    gap: 1rem;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  /* height: 250px; */
+  width: fit-content;
+  padding: 0.2rem 1rem;
+  margin: 0.5rem;
+  background: rgb(129, 144, 115);
+  box-shadow: 4px 4px 8px 1px #00000075;
+  border-radius: 2px;
+  gap: 1rem;
 }
-.input{
-    padding: 0.1rem;
-    font-size: 1rem;
-    margin-bottom: 1rem;
+.input {
+  padding: 0.1rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .homePostBox {
-    width: 100vw;
+  width: 100vw;
 }
 
 .homePost {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    margin: auto;
-    margin-top: 20px;
-    width: 50%;
-   border: 5px solid rgb(129, 144, 115);
-   background: rgb(203, 187, 167);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 20px;
+  width: 50%;
+  border: 5px solid rgb(129, 144, 115);
+  background: rgb(203, 187, 167);
 }
 
 .tag {
-    display: inline-flex;
-    align-items: center;
-    width: min-content;
-    height: min-content;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 0 10px 0 10px;
+  display: inline-flex;
+  align-items: center;
+  width: min-content;
+  height: min-content;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0 10px 0 10px;
 }
 
 .tag svg {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 h1 {
-   color: rgb(129, 144, 115);
-   font-family: sans-serif;
-   font-size: 40px;
-   align-items: center;
+  color: rgb(129, 144, 115);
+  font-family: sans-serif;
+  font-size: 40px;
+  align-items: center;
 }
 /* Styles for the container */
 .box {
-   width: 500px;
-   height: 900px;
-   background-color: rgb(255, 238, 244);
-   border: 5px solid rgb(129, 144, 115);
-   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-   padding: 20px;
-   text-align: center;
-   margin: 0 auto;
-   margin-bottom: 10px;
+  width: 500px;
+  height: 900px;
+  background-color: rgb(255, 238, 244);
+  border: 5px solid rgb(129, 144, 115);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 .newEventBox {
   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 /* Styles for the form */
 .newEventBox form {
-   padding: 10px;
+  padding: 10px;
 }
 
 /* Styles for the labels */
 label {
-   font-weight: bold;
-   display: block;
-   margin-top: 10px;
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
 }
 
 /* Styles for the input fields */
 input[type="text"] {
-   width: 400px;
-   padding: 10px;
-   margin-bottom: 10px;
-   border: 1px solid #ccc;
-   border-radius: 4px;
+  width: 400px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-
 
 /* Styles for the submit button */
 input[type="submit"] {
-   background-color: rgb(129, 144, 115);
-   color: #ffffff;
-   padding: 10px 20px;
-   border: none;
-   border-radius: 4px;
-   font-size: 16px;
-   cursor: pointer;
+  background-color: rgb(129, 144, 115);
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 input[type="submit"]:hover {
-   background-color: rgb(174, 195, 174);
+  background-color: rgb(174, 195, 174);
+}
+
+#signup-submit,
+#login-submit {
+  padding: 15px;
+  margin-bottom: 20px;
 }

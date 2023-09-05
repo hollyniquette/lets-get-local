@@ -1,10 +1,16 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { AuthProvider } from "./authContext";
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
 import HomePage from "./components/HomePage.jsx";
 import ProfilePage from "./components/ProfilePage.jsx";
@@ -13,15 +19,29 @@ import LoginPage from "./components/LoginPage.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
 
+// eslint-disable-next-line no-undef
 if (process.env.NODE_ENV !== "production") {
   // Adds messages only in a dev environment
   loadDevMessages();
   loadErrorMessages();
 }
 
+const httpLink = createHttpLink({
+  uri: "http://localhost:4000/",
+});
+
+const authLink = setContext((_, { headers }) => {
+  return {
+    headers: {
+      ...headers,
+      authorization: localStorage.getItem("token") || "",
+    },
+  };
+});
+
 const client = new ApolloClient({
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
-  uri: "http://localhost:4000/graphql",
 });
 
 const router = createBrowserRouter([
@@ -58,7 +78,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ApolloProvider client={client}>
-    <RouterProvider router={router} />
-  </ApolloProvider>
+  <AuthProvider>
+    <ApolloProvider client={client}>
+      <RouterProvider router={router} />
+    </ApolloProvider>
+  </AuthProvider>
 );
