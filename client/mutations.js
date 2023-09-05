@@ -14,3 +14,26 @@ export const ADD_EVENT = gql`
     }
   }
 `;
+
+export const UPDATE_EVENT = gql`
+  mutation UpdateEvent($updateEventId: ID!, $name: String, $description: String, $date: String, $beginTime: String, $location: String, $type: Type) {
+    updateEvent(id: $updateEventId, name: $name, description: $description, date: $date, beginTime: $beginTime, location: $location, type: $type) {
+      id
+      name
+      description
+      date
+      beginTime
+      location
+      type
+    }
+  }
+`;
+
+export const DELETE_EVENT = gql`
+  mutation DeleteEvent($deleteEventId: ID!) {
+    deleteEvent(id: $deleteEventId) {
+      id
+    }
+  }
+`;
+
