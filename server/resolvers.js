@@ -70,9 +70,7 @@ const resolvers = {
       const event = await Event.findByIdAndDelete(id);
       return event;
     },
-    registerUser: async (parent, args) => {
-      const { username, password, email } = args;
-
+    async registerUser(_, { registerInput: { username, email, password } }) {
       // see if user already exists
       const oldUser = await User.findOne({ email });
 
@@ -82,7 +80,7 @@ const resolvers = {
       }
 
       // hash password
-      const hashedPassword = await bcrypt.hash(password, 12);
+      const hashedPassword = await bcrypt.hash(password, 10);
 
       // create new user
       const newUser = new User({
@@ -107,9 +105,7 @@ const resolvers = {
       await newUser.save();
       return newUser;
     },
-    loginUser: async (parent, args) => {
-      const { email, password } = args;
-
+    async loginUser(_, { loginInput: { email, password } }) {
       // see if user exists
       const user = await User.findOne({ email });
 

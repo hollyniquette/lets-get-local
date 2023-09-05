@@ -4,7 +4,7 @@ const typeDefs = gql`
   enum Type {
     AUTOMOTIVE
     SPORTS
-    ENTERAINMENT
+    ENTERTAINMENT
     EDUCATION
     PETS
     OTHER
