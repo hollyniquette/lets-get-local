@@ -50,7 +50,7 @@ export default function PostH(props) {
       <div className="homePost">
         <h2>{eventName}</h2>
         <div>{type}</div>
-        <img src={`/public/images/${image}`} />
+        <img src={`/images/${image}`} />
         <p>{eventDescription}</p>
         <p>{`Event is on ${eventDate} @ ${eventTime}`}</p>
         <p>{`Location: ${eventLocation}`}</p>
