@@ -28,7 +28,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: "http://localhost:4000/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
