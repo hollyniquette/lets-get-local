@@ -24,6 +24,7 @@
     "graphql-tag": "^2.12.6",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.4.5",
-    "serve": "^14.2.1"
+    "serve": "^14.2.1",
+    "vite": "^4.4.9"
   }
 }
