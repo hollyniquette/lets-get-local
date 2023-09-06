@@ -28,7 +28,8 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  // point to external backend server
+  uri: "https://lets-get-local-server-ced21d26129b.herokuapp.com/",
 });
 
 const authLink = setContext((_, { headers }) => {
