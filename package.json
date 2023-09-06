@@ -4,11 +4,11 @@
   "description": "main entry point for LETS GET LOCAL",
   "main": "",
   "scripts": {
-    "server": "cd server && node index.js",
+    "server": "nodemon --quiet server",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "seed": "node server/seedEvents.js",
-    "start": "concurrently \"serve -s client/dist\" \"npm run server\"",
+    "start": "concurrently \"npm run server\" \"serve -s client/dist\"",
     "heroku-postbuild": "cd client && npm run build"
   },
   "keywords": [],

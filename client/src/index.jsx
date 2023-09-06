@@ -28,7 +28,8 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const httpLink = createHttpLink({
-  uri: "https://lets-get-local-b964844973fd.herokuapp.com/graphql",
+  uri: "http://localhost:4000",
+  credentials: "same-origin",
 });
 
 const authLink = setContext((_, { headers }) => {
