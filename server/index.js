@@ -9,6 +9,7 @@ const express = require("express");
 const http = require("http");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 const { resolvers } = require("./resolvers.js");
 const { typeDefs } = require("./models/typeDefs.js");
@@ -23,6 +24,15 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+});
+
+server.applyMiddleware({
+  path: "../client/dist",
+  app,
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 });
 
 mongoose
@@ -41,7 +51,9 @@ mongoose
         context: async ({ req }) => ({ token: req.headers.token }),
       })
     );
-    await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
+    await new Promise((resolve) =>
+      httpServer.listen({ port: process.env.PORT || 4000 }, resolve)
+    );
     // startStandaloneServer(server, {
     //   listen: { port: process.env.PORT || 4000 },
     // }).then(({ url }) => {
