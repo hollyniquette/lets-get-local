@@ -8,7 +8,6 @@
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "seed": "node server/seedEvents.js",
-    // "start": "concurrently \"npm run server\" \"npm run client\"",
     "start": "concurrently \"serve -s client/dist\" \"npm run server\"",
     "heroku-postbuild": "cd client && npm run build"
   },
