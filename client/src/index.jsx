@@ -28,7 +28,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const httpLink = createHttpLink({
-  uri: process.env.API_HOST,
+  uri: "https://lets-get-local-b964844973fd.herokuapp.com/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
