@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AuthProvider } from "./authContext.jsx";
+import { AuthProvider } from "./authContext";
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 import {
   ApolloClient,
@@ -28,7 +28,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/",
+  uri: process.env.API_HOST,
 });
 
 const authLink = setContext((_, { headers }) => {
