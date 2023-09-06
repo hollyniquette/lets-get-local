@@ -44,7 +44,7 @@ mongoose
     console.log("Connected to MongoDB Atlas");
     await server.start();
     app.use(
-      "/",
+      "/graphql",
       cors(),
       bodyParser.json({ limit: "50mb" }),
       expressMiddleware(server, {
