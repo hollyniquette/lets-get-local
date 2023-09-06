@@ -29,7 +29,6 @@ if (process.env.NODE_ENV !== "production") {
 
 const httpLink = createHttpLink({
   uri: "http://localhost:4000/",
-  credentials: "same-origin",
 });
 
 const authLink = setContext((_, { headers }) => {
