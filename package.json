@@ -4,7 +4,7 @@
   "description": "main entry point for LETS GET LOCAL",
   "main": "",
   "scripts": {
-    "server": "nodemon --quiet server",
+    "server": "cd server && node index.js",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "seed": "node server/seedEvents.js",
